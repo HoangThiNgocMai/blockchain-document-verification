@@ -64,13 +64,14 @@ CREATE TABLE verification_logs (
     document_id INT NULL,
     searched_code VARCHAR(100),
     result ENUM(
-        'valid',
-        'mismatch',
-        'revoked',
-        'not_found',
-        'lookup_only',
-        'error'
-    ) NOT NULL,
+    'valid',
+    'mismatch',
+    'revoked',
+    'not_found',
+    'lookup_only',
+    'error',
+    'unauthorized_issuer'
+) NOT NULL,
     verified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (document_id)
         REFERENCES documents(id)

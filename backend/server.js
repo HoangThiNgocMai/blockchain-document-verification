@@ -7,14 +7,35 @@ const multer = require("multer");
 
 const db = require("./config/database");
 
+
+// ==========================================
+// KHAI BAO ROUTES
+// ==========================================
+
 const documentRoutes = require(
     "./routes/documentRoutes"
 );
 
-// 1. Khoi tao Express
+const verificationRoutes = require(
+    "./routes/verificationRoutes"
+);
+
+const revocationRoutes = require(
+    "./routes/revocationRoutes"
+);
+
+
+// ==========================================
+// 1. KHOI TAO EXPRESS
+// ==========================================
+
 const app = express();
 
-// 2. Cau hinh middleware
+
+// ==========================================
+// 2. CAU HINH MIDDLEWARE
+// ==========================================
+
 app.use(cors());
 
 app.use(express.json());
@@ -25,7 +46,11 @@ app.use(
     })
 );
 
-// 3. API kiem tra Backend
+
+// ==========================================
+// 3. API KIEM TRA BACKEND
+// ==========================================
+
 app.get("/", (req, res) => {
 
     res.json({
@@ -33,9 +58,14 @@ app.get("/", (req, res) => {
         message:
             "Blockchain Document Verification API"
     });
+
 });
 
-// 4. API kiem tra MySQL
+
+// ==========================================
+// 4. API KIEM TRA MYSQL
+// ==========================================
+
 app.get("/api/health", async (req, res) => {
 
     try {
@@ -53,16 +83,39 @@ app.get("/api/health", async (req, res) => {
             success: false,
             database: "disconnected"
         });
+
     }
+
 });
 
-// 5. Dang ky API tai lieu
+
+// ==========================================
+// 5. DANG KY API TAI LIEU
+// ==========================================
+
+// API cap phat tai lieu
 app.use(
     "/api/documents",
     documentRoutes
 );
 
-// 6. Xu ly loi upload va he thong
+// API xac thuc tai lieu
+app.use(
+    "/api/verification",
+    verificationRoutes
+);
+
+// API thu hoi tai lieu
+app.use(
+    "/api/revocation",
+    revocationRoutes
+);
+
+
+// ==========================================
+// 6. XU LY LOI UPLOAD VA HE THONG
+// ==========================================
+
 app.use((err, req, res, next) => {
 
     if (err instanceof multer.MulterError) {
@@ -71,6 +124,7 @@ app.use((err, req, res, next) => {
             success: false,
             message: "File khong hop le hoac qua lon"
         });
+
     }
 
     if (
@@ -82,6 +136,7 @@ app.use((err, req, res, next) => {
             success: false,
             message: err.message
         });
+
     }
 
     console.error("Server error:", err.code);
@@ -90,9 +145,14 @@ app.use((err, req, res, next) => {
         success: false,
         message: "Loi he thong"
     });
+
 });
 
-// 7. Khoi dong Server
+
+// ==========================================
+// 7. KHOI DONG SERVER
+// ==========================================
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, "127.0.0.1", () => {
@@ -106,4 +166,5 @@ app.listen(PORT, "127.0.0.1", () => {
     );
 
     console.log("============================");
+
 });
