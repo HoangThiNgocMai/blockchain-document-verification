@@ -24,6 +24,10 @@ const revocationRoutes = require(
     "./routes/revocationRoutes"
 );
 
+const authRoutes = require(
+    "./routes/authRoutes"
+);
+
 
 // ==========================================
 // 1. KHOI TAO EXPRESS
@@ -90,25 +94,39 @@ app.get("/api/health", async (req, res) => {
 
 
 // ==========================================
-// 5. DANG KY API TAI LIEU
+// 5. DANG KY API HE THONG
 // ==========================================
 
+
 // API cap phat tai lieu
+
 app.use(
     "/api/documents",
     documentRoutes
 );
 
+
 // API xac thuc tai lieu
+
 app.use(
     "/api/verification",
     verificationRoutes
 );
 
+
 // API thu hoi tai lieu
+
 app.use(
     "/api/revocation",
     revocationRoutes
+);
+
+
+// API dang nhap va phan quyen JWT
+
+app.use(
+    "/api/auth",
+    authRoutes
 );
 
 

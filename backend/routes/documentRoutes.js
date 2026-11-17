@@ -3,24 +3,33 @@ const express = require("express");
 
 const router = express.Router();
 
-// Import middleware kiem tra quyen
-const issuerAuth = require(
-    "../middleware/issuerAuth"
-);
+const documentController =
+    require("../controllers/documentController");
 
-// Import middleware upload
-const upload = require(
-    "../middleware/upload"
-);
+const upload =
+    require("../middleware/upload");
 
-// Import Controller
-const documentController = require(
-    "../controllers/documentController"
-);
+const issuerAuth =
+    require("../middleware/issuerAuth");
 
-// API cap phat tai lieu
+const { authenticateToken } =
+    require("../middleware/authMiddleware");
+
+const { authorizeRoles } =
+    require("../middleware/roleMiddleware");
+
+
+// ==========================================
+// CAP PHAT TAI LIEU
+// POST /api/documents/issue
+// ==========================================
+
 router.post(
     "/issue",
+
+    authenticateToken,
+
+    authorizeRoles("issuer"),
 
     issuerAuth,
 
@@ -28,5 +37,10 @@ router.post(
 
     documentController.issueDocument
 );
+
+
+// ==========================================
+// EXPORT
+// ==========================================
 
 module.exports = router;
