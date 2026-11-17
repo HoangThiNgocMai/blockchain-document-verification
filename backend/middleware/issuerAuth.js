@@ -48,7 +48,7 @@ async function issuerAuth(req, res, next) {
         );
 
         if (
-            !Number.isInteger(configuredIssuerId) ||
+            !Number.isSafeInteger(configuredIssuerId) ||
             configuredIssuerId <= 0
         ) {
 
@@ -77,6 +77,7 @@ async function issuerAuth(req, res, next) {
                 u.full_name,
                 u.email,
                 u.role,
+                u.is_active,
                 u.organization_id,
                 o.name AS organization_name,
                 o.wallet_address,
@@ -103,6 +104,17 @@ async function issuerAuth(req, res, next) {
         }
 
         const issuer = users[0];
+
+        // KIEM TRA TAI KHOAN BI KHOA
+
+if (Number(issuer.is_active) !== 1) {
+
+    return res.status(403).json({
+        success: false,
+        message: "Tai khoan da bi khoa"
+    });
+
+}
 
 
         // 5. KIEM TRA QUYEN TO CHUC

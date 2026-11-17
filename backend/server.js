@@ -23,6 +23,7 @@ const revocationRoutes = require("./routes/revocationRoutes");
 const authRoutes = require("./routes/authRoutes");
 const organizationRoutes = require("./routes/organizationRoutes");
 const userRoutes = require("./routes/userRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 // ================================================
 // 2. KHOI TAO EXPRESS
@@ -100,6 +101,8 @@ app.use("/api/organizations", organizationRoutes);
 
 // API quan ly tai khoan Issuer
 app.use("/api/users", userRoutes);
+
+app.use("/api/dashboard", dashboardRoutes);
 
 // ================================================
 // 7. XU LY ROUTE KHONG TON TAI - 404
