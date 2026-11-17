@@ -7,6 +7,37 @@ CREATE TABLE organizations (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS organization_transactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    organization_id INT NOT NULL,
+
+    performed_by INT NOT NULL,
+
+    tx_hash VARCHAR(66) NOT NULL UNIQUE,
+
+    action ENUM(
+        'authorize',
+        'deauthorize'
+    ) NOT NULL,
+
+    block_number BIGINT NULL,
+
+    status ENUM(
+        'pending',
+        'confirmed',
+        'failed'
+    ) NOT NULL DEFAULT 'pending',
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (organization_id)
+        REFERENCES organizations(id),
+
+    FOREIGN KEY (performed_by)
+        REFERENCES users(id)
+);
+
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     organization_id INT NULL,
