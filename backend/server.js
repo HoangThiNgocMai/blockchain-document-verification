@@ -22,6 +22,7 @@ const verificationRoutes = require("./routes/verificationRoutes");
 const revocationRoutes = require("./routes/revocationRoutes");
 const authRoutes = require("./routes/authRoutes");
 const organizationRoutes = require("./routes/organizationRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 // ================================================
 // 2. KHOI TAO EXPRESS
@@ -96,6 +97,9 @@ app.use("/api/revocation", revocationRoutes);
 
 // API quan ly to chuc cap phat
 app.use("/api/organizations", organizationRoutes);
+
+// API quan ly tai khoan Issuer
+app.use("/api/users", userRoutes);
 
 // ================================================
 // 7. XU LY ROUTE KHONG TON TAI - 404
@@ -184,6 +188,7 @@ const server = app.listen(PORT, "127.0.0.1", () => {
     console.log("/api/verification");
     console.log("/api/revocation");
     console.log("/api/organizations");
+    console.log("/api/users");
     console.log("");
     console.log("Process ID:", process.pid);
     console.log("Server file:", __filename);

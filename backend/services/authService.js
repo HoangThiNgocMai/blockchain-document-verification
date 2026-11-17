@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 
 const db = require("../config/database");
 
-
 // ==========================================
 // 1. HAM TAO LOI
 // ==========================================
@@ -16,9 +15,7 @@ function createError(message, statusCode) {
     error.statusCode = statusCode;
 
     return error;
-
 }
-
 
 // ==========================================
 // 2. DANG NHAP HE THONG
@@ -39,14 +36,11 @@ async function login(email, password) {
         !jwtSecret ||
         Buffer.byteLength(jwtSecret, "utf8") < 32
     ) {
-
         throw createError(
             "JWT_SECRET chua duoc cau hinh hop le",
             500
         );
-
     }
-
 
     // --------------------------------------
     // BUOC 2: TIM TAI KHOAN TRONG MYSQL
@@ -60,6 +54,7 @@ async function login(email, password) {
             u.email,
             u.password_hash,
             u.role,
+            u.is_active,
             u.organization_id,
             o.name AS organization_name,
             o.is_authorized
@@ -70,9 +65,7 @@ async function login(email, password) {
         LIMIT 1`,
 
         [email]
-
     );
-
 
     // --------------------------------------
     // BUOC 3: KIEM TRA TAI KHOAN TON TAI
@@ -84,22 +77,17 @@ async function login(email, password) {
             "Email hoac mat khau khong chinh xac",
             401
         );
-
     }
 
     const user = users[0];
-
 
     // --------------------------------------
     // BUOC 4: KIEM TRA MAT KHAU
     // --------------------------------------
 
     const isPasswordValid = await bcrypt.compare(
-
         password,
-
         user.password_hash
-
     );
 
     if (!isPasswordValid) {
@@ -108,12 +96,22 @@ async function login(email, password) {
             "Email hoac mat khau khong chinh xac",
             401
         );
-
     }
 
+    // --------------------------------------
+    // BUOC 5: KIEM TRA TRANG THAI TAI KHOAN
+    // --------------------------------------
+
+    if (Number(user.is_active) !== 1) {
+
+        throw createError(
+            "Tai khoan da bi khoa",
+            403
+        );
+    }
 
     // --------------------------------------
-    // BUOC 5: KIEM TRA VAI TRO
+    // BUOC 6: KIEM TRA VAI TRO
     // --------------------------------------
 
     if (!["admin", "issuer"].includes(user.role)) {
@@ -122,12 +120,10 @@ async function login(email, password) {
             "Tai khoan khong co quyen truy cap",
             403
         );
-
     }
 
-
     // --------------------------------------
-    // BUOC 6: KIEM TRA TO CHUC CAP PHAT
+    // BUOC 7: KIEM TRA TO CHUC CAP PHAT
     // --------------------------------------
 
     if (user.role === "issuer") {
@@ -136,37 +132,28 @@ async function login(email, password) {
             !user.organization_id ||
             Number(user.is_authorized) !== 1
         ) {
-
             throw createError(
                 "To chuc chua duoc uy quyen",
                 403
             );
-
         }
-
     }
 
-
     // --------------------------------------
-    // BUOC 7: TAO JWT ACCESS TOKEN
+    // BUOC 8: TAO JWT ACCESS TOKEN
     // --------------------------------------
 
     const accessToken = jwt.sign(
 
         {
-
             userId: user.id,
-
             role: user.role,
-
             organizationId: user.organization_id
-
         },
 
         jwtSecret,
 
         {
-
             algorithm: "HS256",
 
             expiresIn: expiresIn,
@@ -176,14 +163,11 @@ async function login(email, password) {
 
             audience:
                 "document-verification-api"
-
         }
-
     );
 
-
     // --------------------------------------
-    // BUOC 8: TRA VE KET QUA DANG NHAP
+    // BUOC 9: TRA VE KET QUA DANG NHAP
     // --------------------------------------
 
     return {
@@ -209,11 +193,8 @@ async function login(email, password) {
             organizationName: user.organization_name
 
         }
-
     };
-
 }
-
 
 // ==========================================
 // 3. EXPORT MODULE

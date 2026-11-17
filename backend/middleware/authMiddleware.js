@@ -94,7 +94,7 @@ async function authenticateToken(req, res, next) {
         // 5. KIEM TRA USER ID
 
         if (
-            !Number.isInteger(decoded.userId) ||
+            !Number.isSafeInteger(decoded.userId) ||
             decoded.userId <= 0
         ) {
 
@@ -118,6 +118,7 @@ async function authenticateToken(req, res, next) {
                 u.full_name,
                 u.email,
                 u.role,
+                u.is_active,
                 u.organization_id,
                 o.name AS organization_name,
                 o.wallet_address,
@@ -149,7 +150,22 @@ async function authenticateToken(req, res, next) {
         const user = users[0];
 
 
-        // 7. KIEM TRA VAI TRO HIEN TAI
+        // 7. KIEM TRA TRANG THAI TAI KHOAN
+
+        if (Number(user.is_active) !== 1) {
+
+            return res.status(403).json({
+
+                success: false,
+
+                message: "Tai khoan da bi khoa"
+
+            });
+
+        }
+
+
+        // 8. KIEM TRA VAI TRO HIEN TAI
 
         if (!["admin", "issuer"].includes(user.role)) {
 
@@ -164,7 +180,7 @@ async function authenticateToken(req, res, next) {
         }
 
 
-        // 8. KIEM TRA QUYEN TO CHUC
+        // 9. KIEM TRA QUYEN TO CHUC
 
         if (user.role === "issuer") {
 
@@ -186,7 +202,7 @@ async function authenticateToken(req, res, next) {
         }
 
 
-        // 9. GAN THONG TIN NGUOI DUNG
+        // 10. GAN THONG TIN NGUOI DUNG
 
         req.user = {
 
@@ -207,7 +223,7 @@ async function authenticateToken(req, res, next) {
         };
 
 
-        // 10. CHUYEN SANG MIDDLEWARE TIEP THEO
+        // 11. CHUYEN SANG MIDDLEWARE TIEP THEO
 
         return next();
 
