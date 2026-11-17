@@ -6,3 +6,7 @@ uploads/
 *.bak
 .postman/
 postman/
+ 
+# Local blockchain test scripts
+backend/test-admin-blockchain.js
+backend/test-admin-wallet.js
