@@ -1,0 +1,267 @@
+/* ================================================
+   1. TRANG QUẢN LÝ TÀI LIỆU
+================================================ */
+
+.issuer-documents-page {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+
+/* ================================================
+   2. TIÊU ĐỀ
+================================================ */
+
+.issuer-documents-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.issuer-documents-heading h3 {
+  color: #124a9a;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.issuer-documents-heading p {
+  font-size: 14px;
+}
+
+.issuer-documents-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+/* ================================================
+   3. THẺ THỐNG KÊ
+================================================ */
+
+.issuer-documents-page .card {
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+}
+
+.issuer-document-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.issuer-documents-page .card-body h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.issuer-documents-page .card-body p {
+  font-size: 14px;
+}
+
+.issuer-documents-page .card-header {
+  padding: 15px 18px;
+}
+
+.issuer-documents-page .card-header h5 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #124a9a;
+  margin-bottom: 0;
+}
+
+
+/* ================================================
+   4. BỘ LỌC
+================================================ */
+
+.issuer-documents-page .form-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.issuer-documents-page .form-control,
+.issuer-documents-page .form-select {
+  min-height: 40px;
+  font-size: 14px;
+}
+
+
+/* ================================================
+   5. BẢNG DANH SÁCH
+================================================ */
+
+.issuer-documents-page .table {
+  font-size: 13px;
+}
+
+.issuer-documents-page .table thead th {
+  background-color: #f5f6f8;
+  padding: 12px;
+  white-space: nowrap;
+}
+
+.issuer-documents-page .table td {
+  padding: 12px;
+}
+
+.issuer-documents-page .badge {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.issuer-list-code {
+  display: block;
+  max-width: 155px;
+  min-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #124a9a;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.issuer-list-title {
+  min-width: 150px;
+  max-width: 250px;
+  overflow-wrap: anywhere;
+}
+
+.issuer-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.issuer-row-actions .btn {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+
+/* ================================================
+   6. HỘP THOẠI CHI TIẾT
+================================================ */
+
+.issuer-detail-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.issuer-detail-dialog {
+  width: 100%;
+  max-width: 850px;
+  max-height: calc(100dvh - 40px);
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.issuer-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.issuer-detail-header h5 {
+  font-size: 18px;
+  color: #124a9a;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.issuer-detail-body {
+  padding: 24px;
+  overflow-y: auto;
+  min-height: 0;
+  font-size: 14px;
+}
+
+.issuer-detail-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.issuer-detail-table th {
+  width: 180px;
+  color: #6c757d;
+  font-weight: 500;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.issuer-detail-table td {
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.issuer-full-code {
+  font-family: monospace;
+  color: #124a9a;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.issuer-detail-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+}
+
+
+/* ================================================
+   7. HIỂN THỊ TRÊN MÀN HÌNH NHỎ
+================================================ */
+
+@media (max-width: 767.98px) {
+
+  .issuer-documents-heading h3 {
+    font-size: 22px;
+  }
+
+  .issuer-document-stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .issuer-documents-page .card-body h3 {
+    font-size: 24px;
+  }
+
+  .issuer-documents-page .table {
+    font-size: 12px;
+  }
+
+  .issuer-detail-header,
+  .issuer-detail-body,
+  .issuer-detail-footer {
+    padding: 15px;
+  }
+
+  .issuer-detail-table th {
+    width: 35%;
+  }
+
+}

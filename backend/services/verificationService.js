@@ -1,4 +1,3 @@
-
 const db = require("../config/database");
 
 const {
@@ -20,9 +19,14 @@ async function saveVerificationLog(
     documentCode,
     result
 ) {
+
     await db.execute(
         `INSERT INTO verification_logs
-        (document_id, searched_code, result)
+        (
+            document_id,
+            searched_code,
+            result
+        )
         VALUES (?, ?, ?)`,
         [
             documentId || null,
@@ -37,22 +41,31 @@ async function saveVerificationLog(
 // 2. XAC THUC TAI LIEU
 // ==========================================
 
-async function verifyDocument(documentCode, file = null) {
+async function verifyDocument(
+    documentCode,
+    file = null
+) {
 
     let documentId = null;
 
     try {
 
-        // Kiem tra mang Blockchain
+        // ==================================
+        // 3. KIEM TRA MANG BLOCKCHAIN
+        // ==================================
+
         const network = await provider.getNetwork();
 
         if (network.chainId !== 11155111n) {
-            throw new Error("Khong phai mang Sepolia");
+
+            throw new Error(
+                "Không phải mạng Sepolia."
+            );
         }
 
 
         // ==================================
-        // 3. TIM TAI LIEU TRONG MYSQL
+        // 4. TIM TAI LIEU TRONG MYSQL
         // ==================================
 
         const [rows] = await db.execute(
@@ -77,12 +90,13 @@ async function verifyDocument(documentCode, file = null) {
         const document = rows[0] || null;
 
         if (document) {
+
             documentId = document.id;
         }
 
 
         // ==================================
-        // 4. DOC DU LIEU TU BLOCKCHAIN
+        // 5. DOC DU LIEU TU BLOCKCHAIN
         // ==================================
 
         const blockchainDocument =
@@ -107,7 +121,7 @@ async function verifyDocument(documentCode, file = null) {
 
 
         // ==================================
-        // 5. TAI LIEU KHONG TON TAI
+        // 6. TAI LIEU KHONG TON TAI
         // ==================================
 
         if (!exists) {
@@ -119,22 +133,33 @@ async function verifyDocument(documentCode, file = null) {
             );
 
             return {
+
                 valid: false,
+
                 result: "not_found",
-                message: "Tai lieu khong ton tai tren Blockchain",
+
+                message:
+                    "Tài liệu không tồn tại trên Blockchain.",
+
                 documentCode
             };
         }
 
 
         // ==================================
-        // 6. THONG TIN TAI LIEU
+        // 7. THONG TIN TAI LIEU
         // ==================================
 
         const documentInfo = {
+
             documentCode,
-            title: document?.title || null,
-            documentType: document?.document_type || null,
+
+            title:
+                document?.title || null,
+
+            documentType:
+                document?.document_type || null,
+
             organizationName:
                 document?.organization_name || null,
 
@@ -150,17 +175,20 @@ async function verifyDocument(documentCode, file = null) {
                 document?.blockchain_tx || null,
 
             exists,
+
             revoked,
 
             databaseHashMatches: document
+
                 ? document.file_hash.toLowerCase()
                     === blockchainHash
+
                 : null
         };
 
 
         // ==================================
-        // 7. KIEM TRA TAI LIEU BI THU HOI
+        // 8. KIEM TRA TAI LIEU BI THU HOI
         // ==================================
 
         if (revoked) {
@@ -172,16 +200,55 @@ async function verifyDocument(documentCode, file = null) {
             );
 
             return {
+
                 valid: false,
+
                 result: "revoked",
-                message: "Tai lieu da bi thu hoi",
+
+                message:
+                    "Tài liệu đã bị thu hồi và không còn hiệu lực.",
+
                 data: documentInfo
             };
         }
 
 
         // ==================================
-        // 8. TRA CUU KHONG TAI FILE
+        // 9. KIEM TRA QUYEN VI CAP PHAT
+        // ==================================
+
+        const issuerAuthorized =
+            await contract.authorizedIssuers(
+                issuerAddress
+            );
+
+        documentInfo.issuerAuthorized =
+            issuerAuthorized;
+
+        if (!issuerAuthorized) {
+
+            await saveVerificationLog(
+                documentId,
+                documentCode,
+                "unauthorized_issuer"
+            );
+
+            return {
+
+                valid: false,
+
+                result: "unauthorized_issuer",
+
+                message:
+                    "Ví cấp phát tài liệu hiện không được cấp quyền.",
+
+                data: documentInfo
+            };
+        }
+
+
+        // ==================================
+        // 10. TRA CUU KHONG TAI FILE
         // ==================================
 
         if (!file) {
@@ -193,16 +260,21 @@ async function verifyDocument(documentCode, file = null) {
             );
 
             return {
+
                 valid: null,
+
                 result: "lookup_only",
-                message: "Tai lieu da duoc dang ky. Can tai file len de xac thuc noi dung",
+
+                message:
+                    "Tài liệu đã được đăng ký. Vui lòng tải file lên để xác thực nội dung.",
+
                 data: documentInfo
             };
         }
 
 
         // ==================================
-        // 9. TAO MA BAM FILE TAI LEN
+        // 11. TAO MA BAM FILE TAI LEN
         // ==================================
 
         const uploadedHash =
@@ -211,25 +283,56 @@ async function verifyDocument(documentCode, file = null) {
 
 
         // ==================================
-        // 10. SO SANH HAI MA BAM
+        // 12. SO SANH HAI MA BAM
         // ==================================
 
         const hashMatch =
-    uploadedHash === blockchainHash;
-
-        const isValid =
-    await contract.verifyDocument(
-        documentCode,
-        `0x${uploadedHash}`
-    );
-
-        const result = isValid
-            ? "valid"
-            : "mismatch";
+            uploadedHash === blockchainHash;
 
 
         // ==================================
-        // 11. LUU LICH SU XAC THUC
+        // 13. XAC THUC BANG SMART CONTRACT
+        // ==================================
+
+        const isValid =
+            await contract.verifyDocument(
+                documentCode,
+                `0x${uploadedHash}`
+            );
+
+
+        // ==================================
+        // 14. XAC DINH KET QUA
+        // ==================================
+
+        let result;
+        let message;
+
+        if (isValid && hashMatch) {
+
+            result = "valid";
+
+            message =
+                "Tài liệu hợp lệ và nội dung toàn vẹn.";
+
+        } else if (!isValid && !hashMatch) {
+
+            result = "mismatch";
+
+            message =
+                "Nội dung tài liệu không trùng khớp với dữ liệu Blockchain.";
+
+        } else {
+
+            result = "error";
+
+            message =
+                "Kết quả xác thực chưa nhất quán. Vui lòng thử lại.";
+        }
+
+
+        // ==================================
+        // 15. LUU LICH SU XAC THUC
         // ==================================
 
         await saveVerificationLog(
@@ -240,23 +343,29 @@ async function verifyDocument(documentCode, file = null) {
 
 
         // ==================================
-        // 12. TRA VE KET QUA
+        // 16. TRA VE KET QUA
         // ==================================
 
         return {
-            valid: isValid,
+
+            valid: result === "error"
+                ? null
+                : result === "valid",
+
             result,
 
-            message: isValid
-                ? "Tai lieu hop le va toan ven"
-                : "Noi dung tai lieu khong trung khop",
+            message,
 
             data: {
+
                 ...documentInfo,
+
                 uploadedHash,
-                hashMatch: isValid
+
+                hashMatch
             }
         };
+
 
     } catch (error) {
 
@@ -287,7 +396,7 @@ async function verifyDocument(documentCode, file = null) {
 
 
 // ==========================================
-// 13. EXPORT MODULE
+// 17. EXPORT MODULE
 // ==========================================
 
 module.exports = {

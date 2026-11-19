@@ -1,0 +1,352 @@
+/* ================================================
+   TRANG QUẢN LÝ GIAO DỊCH BLOCKCHAIN
+================================================ */
+
+.transactions-page {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+
+/* TIÊU ĐỀ */
+
+.transactions-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.transactions-heading h3 {
+  color: #124a9a;
+  font-size: 25px;
+}
+
+.transactions-heading p {
+  font-size: 14px;
+}
+
+
+/* THẺ THỐNG KÊ */
+
+.transactions-page .card {
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+}
+
+.transactions-page .card-header h5 {
+  color: #124a9a;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.transaction-stat-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 25px;
+}
+
+
+/* BIỂU ĐỒ THỐNG KÊ */
+
+.transaction-chart-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.transaction-chart-row:last-child {
+  margin-bottom: 0;
+}
+
+.transaction-chart-label {
+  width: 180px;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.transaction-chart-value {
+  width: 45px;
+  text-align: right;
+  font-size: 14px;
+}
+
+.transaction-chart-row .progress {
+  height: 13px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+}
+
+
+/* BỘ LỌC VÀ TÌM KIẾM */
+
+.transactions-page .form-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.transactions-page .form-control,
+.transactions-page .form-select {
+  min-height: 40px;
+  font-size: 14px;
+}
+
+
+/* BẢNG GIAO DỊCH */
+
+.transactions-table {
+  font-size: 13px;
+}
+
+.transactions-table th {
+  padding: 12px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.transactions-table td {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.transactions-table .badge {
+  white-space: normal;
+  line-height: 1.5;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.transactions-table .btn {
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.transaction-organization {
+  min-width: 150px;
+  max-width: 220px;
+  overflow-wrap: anywhere;
+}
+
+.transaction-document {
+  min-width: 150px;
+  max-width: 230px;
+  overflow-wrap: anywhere;
+}
+
+
+/* MÃ GIAO DỊCH */
+
+.transaction-hash-box {
+  min-width: 130px;
+}
+
+.transaction-hash {
+  display: block;
+  color: #124a9a;
+  font-family: monospace;
+  font-size: 12px;
+  max-width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.transaction-link {
+  display: inline-block;
+  color: #0d6efd;
+  text-decoration: none;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.transaction-link:hover {
+  text-decoration: underline;
+}
+
+
+/* GIAO DIỆN ĐIỆN THOẠI */
+
+@media (max-width: 767.98px) {
+
+  .transactions-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .transactions-heading h3 {
+    font-size: 22px;
+  }
+
+  .transaction-stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .transaction-chart-row {
+    gap: 10px;
+  }
+
+  .transaction-chart-label {
+    width: 125px;
+    font-size: 12px;
+  }
+
+  .transaction-chart-value {
+    width: 30px;
+    font-size: 12px;
+  }
+
+  .transactions-table th,
+  .transactions-table td {
+    padding: 9px;
+  }
+
+}
+
+/* ================================================
+   CỬA SỔ CHI TIẾT GIAO DỊCH
+================================================ */
+
+.transaction-detail-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.transaction-detail-dialog {
+  width: 100%;
+  max-width: 750px;
+  max-height: calc(100dvh - 40px);
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow-y: auto;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* TIÊU ĐỀ */
+
+.transaction-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e1e5eb;
+}
+
+.transaction-detail-header h5 {
+  color: #124a9a;
+  font-size: 19px;
+}
+
+
+/* NỘI DUNG */
+
+.transaction-detail-body {
+  padding: 24px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.transaction-detail-body label {
+  display: block;
+  color: #6c757d;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.transaction-detail-body .badge {
+  white-space: normal;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.transaction-section-title {
+  color: #124a9a;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #e1e5eb;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+
+/* HIỂN THỊ MÃ GIAO DỊCH */
+
+.transaction-full-hash {
+  background: #f5f6f8;
+  padding: 12px;
+  border: 1px solid #e1e5eb;
+  border-radius: 5px;
+  color: #124a9a;
+  font-family: monospace;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+
+.transaction-detail-body .alert {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* CHÂN CỬA SỔ */
+
+.transaction-detail-footer {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid #e1e5eb;
+}
+
+.transaction-detail-footer .btn {
+  min-width: 90px;
+  font-size: 14px;
+}
+
+
+/* GIAO DIỆN ĐIỆN THOẠI */
+
+@media (max-width: 575.98px) {
+
+  .transaction-detail-overlay {
+    padding: 10px;
+  }
+
+  .transaction-detail-dialog {
+    max-height: calc(100dvh - 20px);
+  }
+
+  .transaction-detail-header {
+    padding: 15px;
+  }
+
+  .transaction-detail-header h5 {
+    font-size: 17px;
+  }
+
+  .transaction-detail-body {
+    padding: 16px;
+  }
+
+  .transaction-detail-footer {
+    padding: 15px;
+  }
+
+}

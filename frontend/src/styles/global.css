@@ -1,0 +1,145 @@
+
+/* =========================================
+   CAU HINH GIAO DIEN CHUNG
+========================================= */
+
+:root {
+    --primary-color: #0d6efd;
+    --primary-dark: #0b5ed7;
+    --background-color: #f5f6f8;
+    --white-color: #ffffff;
+    --text-color: #212529;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+}
+
+/* Cai dat chung */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+#root {
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+/* Nut bam */
+
+.btn {
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+/* Bieu mau */
+
+.form-control,
+.form-select {
+    border-radius: 5px;
+    min-height: 42px;
+    font-size: 15px;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+/* Khung noi dung */
+
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--white-color);
+}
+
+/* Bang du lieu */
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    background-color: #f1f3f5;
+    font-weight: 600;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+    padding: 12px;
+}
+
+/* Tieu de trang */
+
+.page-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Mau trang thai */
+
+.status-success {
+    color: #198754;
+}
+
+.status-danger {
+    color: #dc3545;
+}
+
+.status-warning {
+    color: #b58105;
+}
+
+.status-muted {
+    color: #6c757d;
+}
+
+/* Ho tro man hinh dien thoai */
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 20px;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+    }
+}

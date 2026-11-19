@@ -1,0 +1,342 @@
+/* ================================================
+   1. TRANG QUẢN LÝ LỊCH SỬ XÁC THỰC
+================================================ */
+
+.verifications-page {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+
+/* ================================================
+   2. TIÊU ĐỀ
+================================================ */
+
+.verifications-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.verifications-heading h3 {
+  color: #124a9a;
+  font-size: 25px;
+}
+
+.verifications-heading p {
+  font-size: 14px;
+}
+
+
+/* ================================================
+   3. THẺ THỐNG KÊ
+================================================ */
+
+.verifications-page .card {
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+}
+
+.verification-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.verifications-page .card-body h3 {
+  font-size: 28px;
+  margin-bottom: 0;
+}
+
+.verifications-page .card-header h5 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #124a9a;
+}
+
+
+/* ================================================
+   4. TÌM KIẾM VÀ BỘ LỌC
+================================================ */
+
+.verifications-page .form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #343a40;
+}
+
+.verifications-page .form-control,
+.verifications-page .form-select {
+  min-height: 40px;
+  font-size: 14px;
+}
+
+.verifications-page .input-group .btn {
+  font-size: 14px;
+}
+
+.verifications-page .alert {
+  font-size: 14px;
+}
+
+
+/* ================================================
+   5. BẢNG LỊCH SỬ XÁC THỰC
+================================================ */
+
+.verifications-table {
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.verifications-table th {
+  white-space: nowrap;
+  font-weight: 600;
+  color: #343a40;
+  background-color: #f5f6f8;
+  padding: 12px;
+}
+
+.verifications-table td {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.verifications-table .badge {
+  white-space: normal;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.verifications-table .btn {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+
+/* ================================================
+   6. MÃ TRA CỨU
+================================================ */
+
+.verification-code {
+  display: block;
+  max-width: 160px;
+  min-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: monospace;
+  font-size: 12px;
+  color: #124a9a;
+}
+
+.verification-title {
+  min-width: 160px;
+  max-width: 250px;
+  overflow-wrap: anywhere;
+}
+
+.verification-organization {
+  min-width: 150px;
+  max-width: 220px;
+  overflow-wrap: anywhere;
+}
+
+
+/* ================================================
+   7. GIAO DIỆN ĐIỆN THOẠI
+================================================ */
+
+@media (max-width: 767.98px) {
+
+  .verifications-heading h3 {
+    font-size: 22px;
+  }
+
+  .verification-stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .verifications-page .card-body h3 {
+    font-size: 24px;
+  }
+
+  .verifications-table {
+    font-size: 12px;
+  }
+
+}
+
+/* ================================================
+   8. CỬA SỔ CHI TIẾT LỊCH SỬ XÁC THỰC
+================================================ */
+
+.verification-detail-dialog {
+  width: calc(100% - 32px);
+  max-width: 850px;
+  max-height: calc(100dvh - 40px);
+  padding: 0;
+  margin: auto;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #212529;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.verification-detail-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.verification-detail-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+
+/* TIÊU ĐỀ */
+
+.verification-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #dee2e6;
+  flex-shrink: 0;
+}
+
+.verification-detail-header h5 {
+  font-size: 19px;
+  font-weight: 600;
+  color: #124a9a;
+}
+
+
+/* NỘI DUNG */
+
+.verification-detail-body {
+  padding: 24px;
+  overflow-y: auto;
+  min-height: 0;
+  font-size: 14px;
+}
+
+
+/* HỘP KẾT QUẢ */
+
+.verification-result-box {
+  padding: 18px;
+  background-color: #f5f6f8;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.verification-result-box .badge {
+  font-size: 13px;
+  padding: 8px 12px;
+}
+
+
+/* TIÊU ĐỀ NHÓM THÔNG TIN */
+
+.verification-section-title {
+  color: #124a9a;
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+
+/* DÒNG THÔNG TIN */
+
+.verification-information-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 13px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.verification-information-label {
+  width: 180px;
+  flex-shrink: 0;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.verification-information-value {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+
+/* MÃ TRA CỨU */
+
+.verification-full-code {
+  font-family: monospace;
+  color: #124a9a;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.verification-copy-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+/* CHÂN CỬA SỔ */
+
+.verification-detail-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  flex-shrink: 0;
+}
+
+
+/* GIAO DIỆN ĐIỆN THOẠI */
+
+@media (max-width: 575.98px) {
+
+  .verification-detail-header,
+  .verification-detail-body,
+  .verification-detail-footer {
+    padding: 16px;
+  }
+
+  .verification-detail-header h5 {
+    font-size: 16px;
+  }
+
+  .verification-information-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .verification-information-label {
+    width: 100%;
+  }
+
+  .verification-information-value {
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,191 @@
+/* ================================================
+   1. TRANG THU HỒI TÀI LIỆU
+================================================ */
+
+.revoke-document-page {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.revoke-heading h3 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #124a9a;
+}
+
+.revoke-heading p {
+  font-size: 14px;
+}
+
+
+/* ================================================
+   2. KHUNG NỘI DUNG
+================================================ */
+
+.revoke-document-page .card {
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+}
+
+.revoke-document-page .card-header {
+  padding: 16px 24px;
+}
+
+.revoke-document-page .card-header h5 {
+  color: #124a9a;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.revoke-document-page .card-body {
+  padding: 24px;
+}
+
+.revoke-document-page .form-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.revoke-document-page .form-control {
+  min-height: 42px;
+  font-size: 14px;
+}
+
+.revoke-document-page .form-check-label {
+  font-size: 14px;
+}
+
+
+/* ================================================
+   3. THÔNG TIN TÀI LIỆU
+================================================ */
+
+.revoke-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 14px;
+}
+
+.revoke-info-row > span:first-child {
+  width: 180px;
+  flex-shrink: 0;
+  color: #6c757d;
+}
+
+.revoke-info-row > strong,
+.revoke-info-row > div {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.revoke-code {
+  font-family: monospace;
+  font-size: 12px;
+  color: #124a9a;
+  overflow-wrap: anywhere;
+}
+
+.revoke-info-value {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+
+/* ================================================
+   4. CẢNH BÁO VÀ NÚT THAO TÁC
+================================================ */
+
+.revoke-document-page .alert {
+  font-size: 14px;
+}
+
+.revoke-document-page .alert h6 {
+  font-weight: 600;
+}
+
+.revoke-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+
+/* ================================================
+   5. ĐANG XỬ LÝ
+================================================ */
+
+.revoke-processing {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px;
+  border: 1px solid #b6c7df;
+  background-color: #f0f5ff;
+  border-radius: 6px;
+}
+
+.revoke-processing .spinner-border {
+  flex-shrink: 0;
+}
+
+
+/* ================================================
+   6. KẾT QUẢ THU HỒI
+================================================ */
+
+.revoke-success-heading {
+  text-align: center;
+  padding: 20px 0 30px;
+}
+
+.revoke-success-heading > i {
+  font-size: 55px;
+  color: #198754;
+}
+
+.revoke-success-heading h4 {
+  color: #198754;
+  font-size: 23px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+
+/* ================================================
+   7. MÀN HÌNH NHỎ
+================================================ */
+
+@media (max-width: 767.98px) {
+
+  .revoke-heading h3 {
+    font-size: 22px;
+  }
+
+  .revoke-document-page .card-body {
+    padding: 16px;
+  }
+
+  .revoke-info-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .revoke-info-row > span:first-child {
+    width: 100%;
+  }
+
+  .revoke-actions {
+    flex-direction: column;
+  }
+
+  .revoke-actions .btn {
+    width: 100%;
+  }
+
+}

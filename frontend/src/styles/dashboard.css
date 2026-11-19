@@ -1,0 +1,163 @@
+/* =========================================
+   1. TRANG THỐNG KÊ
+========================================= */
+
+.dashboard-page {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.dashboard-page .card {
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+}
+
+.dashboard-page .card-header {
+  border-bottom: 1px solid #e1e5eb;
+}
+
+.dashboard-page .card-header h5 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   2. Ô THỐNG KÊ
+========================================= */
+
+.stat-card .card-body {
+  padding: 20px;
+}
+
+.stat-title {
+  color: #666666;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 8px;
+  font-size: 23px;
+  flex-shrink: 0;
+}
+
+.stat-link {
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.stat-link:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   3. THANH THỐNG KÊ
+========================================= */
+
+.dashboard-progress {
+  height: 9px;
+  border-radius: 4px;
+  background-color: #edf0f4;
+}
+
+.dashboard-progress .progress-bar {
+  border-radius: 4px;
+}
+
+
+/* =========================================
+   4. THỐNG KÊ XÁC THỰC
+========================================= */
+
+.verification-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px;
+  background: #f0f5ff;
+  border: 1px solid #dbe7fc;
+  border-radius: 5px;
+}
+
+.verification-total span {
+  color: #555555;
+  font-size: 14px;
+}
+
+
+/* =========================================
+   5. BẢNG TÀI LIỆU
+========================================= */
+
+.dashboard-table {
+  font-size: 14px;
+}
+
+.dashboard-table th {
+  white-space: nowrap;
+  font-weight: 600;
+  color: #444444;
+  padding: 12px;
+}
+
+.dashboard-table td {
+  padding: 12px;
+}
+
+.document-code {
+  display: inline-block;
+  max-width: 155px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #0d6efd;
+  vertical-align: middle;
+}
+
+
+/* =========================================
+   6. GIAO DIỆN ĐIỆN THOẠI
+========================================= */
+
+@media (max-width: 767.98px) {
+
+  .dashboard-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-heading h3 {
+    font-size: 22px;
+  }
+
+  .stat-value {
+    font-size: 28px;
+  }
+
+  .stat-card .card-body {
+    padding: 15px;
+  }
+}

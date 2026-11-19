@@ -1,0 +1,190 @@
+/* Bố cục toàn trang */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f6f8;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Thanh tiêu đề */
+
+.login-header {
+  background-color: #0d6efd;
+  padding: 18px 0;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-brand:hover {
+  color: #ffffff;
+}
+
+.login-brand i {
+  font-size: 28px;
+}
+
+/* Khu vực đăng nhập */
+
+.login-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px 15px;
+}
+
+/* Khung đăng nhập */
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 32px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Tiêu đề đăng nhập */
+
+.login-heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaf2ff;
+  color: #0d6efd;
+  border-radius: 50%;
+}
+
+.login-icon i {
+  font-size: 34px;
+}
+
+.login-heading h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 10px;
+}
+
+.login-heading p {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+/* Ô nhập dữ liệu */
+
+.login-card .form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #343a40;
+}
+
+.login-card .form-control {
+  min-height: 44px;
+  font-size: 14px;
+}
+
+.login-card .input-group-text {
+  background-color: #f8f9fa;
+  color: #6c757d;
+}
+
+.password-toggle {
+  background-color: #ffffff;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+}
+
+.password-toggle:hover {
+  background-color: #f5f6f8;
+  color: #0d6efd;
+}
+
+/* Nút đăng nhập */
+
+.login-button {
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Quay về trang chủ */
+
+.login-back {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.login-back a {
+  color: #0d6efd;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.login-back a:hover {
+  text-decoration: underline;
+}
+
+/* Ghi chú */
+
+.login-note {
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  color: #6c757d;
+}
+
+/* Chân trang */
+
+.login-footer {
+  padding: 18px 15px;
+  background-color: #ffffff;
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+  color: #6c757d;
+  font-size: 13px;
+}
+
+/* Hiển thị trên điện thoại */
+
+@media (max-width: 576px) {
+  .login-brand {
+    font-size: 13px;
+  }
+
+  .login-brand i {
+    font-size: 24px;
+  }
+
+  .login-card {
+    padding: 24px 20px;
+  }
+
+  .login-main {
+    padding: 25px 15px;
+  }
+
+  .login-heading h1 {
+    font-size: 22px;
+  }
+}

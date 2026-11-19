@@ -1,0 +1,270 @@
+/* Trang quản lý đơn vị */
+
+.organizations-page {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.organizations-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.organizations-page .card {
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+}
+
+.organizations-page .card-header {
+  border-bottom: 1px solid #e1e5eb;
+}
+
+.organizations-page .card-header h5 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* Bảng danh sách */
+
+.organizations-table {
+  font-size: 14px;
+}
+
+.organizations-table th {
+  white-space: nowrap;
+  font-weight: 600;
+  padding: 12px;
+  color: #444444;
+}
+
+.organizations-table td {
+  padding: 12px;
+}
+
+/* Địa chỉ ví Blockchain */
+
+.organization-wallet {
+  display: inline-block;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  font-family: monospace;
+  color: #0d6efd;
+  font-size: 13px;
+}
+
+/* Ô tìm kiếm */
+
+.organizations-page .form-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.organizations-page .form-control,
+.organizations-page .form-select {
+  min-height: 42px;
+}
+
+/* Giao diện điện thoại */
+
+@media (max-width: 767.98px) {
+
+  .organizations-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .organizations-heading h3 {
+    font-size: 22px;
+  }
+
+  .organization-wallet {
+    max-width: 140px;
+  }
+
+}
+/* =========================================
+   BIỂU MẪU THÊM VÀ CHỈNH SỬA ĐƠN VỊ
+========================================= */
+
+.organization-form-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background-color: rgba(0, 0, 0, 0.45);
+  overflow-y: auto;
+}
+
+.organization-form-dialog {
+  width: 100%;
+  max-width: 580px;
+  max-height: calc(100dvh - 40px);
+
+  background-color: #ffffff;
+  border-radius: 8px;
+
+  overflow-y: auto;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.organization-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+
+  padding: 20px;
+
+  border-bottom: 1px solid #e1e5eb;
+}
+
+.organization-form-header h5 {
+  font-size: 19px;
+  color: #124a9a;
+}
+
+.organization-form-body {
+  padding: 24px;
+}
+
+.organization-form-body .form-control {
+  min-height: 44px;
+}
+
+.organization-form-body .form-control[readonly] {
+  background-color: #f0f2f5;
+  cursor: not-allowed;
+}
+
+.organization-form-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  padding: 16px 24px;
+
+  border-top: 1px solid #e1e5eb;
+}
+
+@media (max-width: 575.98px) {
+
+  .organization-form-overlay {
+    padding: 10px;
+  }
+
+  .organization-form-header {
+    padding: 15px;
+  }
+
+  .organization-form-header h5 {
+    font-size: 17px;
+  }
+
+  .organization-form-body {
+    padding: 15px;
+  }
+
+  .organization-form-footer {
+    padding: 15px;
+  }
+
+}
+
+/* =========================================
+   KIỂM TRA TRẠNG THÁI BLOCKCHAIN
+========================================= */
+
+.blockchain-status-dialog {
+  max-width: 650px;
+}
+
+/* Địa chỉ ví và Smart Contract */
+
+.blockchain-address {
+  font-family: monospace;
+  font-size: 13px;
+  color: #0d6efd;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+/* Dòng trạng thái quyền */
+
+.blockchain-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  padding: 15px 0;
+
+  border-bottom: 1px solid #e1e5eb;
+
+  font-size: 14px;
+}
+
+.blockchain-status-row i {
+  color: #0d6efd;
+}
+
+/* Thông tin Blockchain */
+
+.blockchain-information {
+  background-color: #f5f6f8;
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.blockchain-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.blockchain-info-row:last-child {
+  margin-bottom: 0;
+}
+
+.blockchain-info-row span {
+  color: #6c757d;
+}
+
+.blockchain-info-row strong {
+  text-align: right;
+  font-weight: 600;
+}
+
+@media (max-width: 575.98px) {
+
+  .blockchain-status-row {
+    font-size: 13px;
+  }
+
+  .blockchain-information {
+    padding: 12px;
+  }
+
+  .blockchain-address {
+    font-size: 12px;
+  }
+
+}

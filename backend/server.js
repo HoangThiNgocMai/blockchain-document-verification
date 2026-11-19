@@ -24,7 +24,12 @@ const authRoutes = require("./routes/authRoutes");
 const organizationRoutes = require("./routes/organizationRoutes");
 const userRoutes = require("./routes/userRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
-
+const transactionRoutes = require("./routes/transactionRoutes");
+const issuerTransactionRoutes = require("./routes/issuerTransactionRoutes");
+const issuerVerificationRoutes = require(
+  "./routes/issuerVerificationRoutes"
+);
+const verificationLogRoutes = require("./routes/verificationLogRoutes");
 // ================================================
 // 2. KHOI TAO EXPRESS
 // ================================================
@@ -103,7 +108,14 @@ app.use("/api/organizations", organizationRoutes);
 app.use("/api/users", userRoutes);
 
 app.use("/api/dashboard", dashboardRoutes);
-
+// API quan ly giao dich Blockchain
+app.use("/api/transactions", transactionRoutes);
+app.use("/api/issuer-transactions", issuerTransactionRoutes);
+app.use(
+  "/api/issuer-verifications",
+  issuerVerificationRoutes
+);
+app.use("/api/verification-logs", verificationLogRoutes);
 // ================================================
 // 7. XU LY ROUTE KHONG TON TAI - 404
 // ================================================
@@ -192,6 +204,8 @@ const server = app.listen(PORT, "127.0.0.1", () => {
     console.log("/api/revocation");
     console.log("/api/organizations");
     console.log("/api/users");
+    console.log("/api/dashboard");
+    console.log("/api/transactions");
     console.log("");
     console.log("Process ID:", process.pid);
     console.log("Server file:", __filename);

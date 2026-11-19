@@ -1,0 +1,310 @@
+/* =========================================
+   1. CẤU HÌNH CHUNG
+========================================= */
+
+:root {
+  --sidebar-width: 250px;
+  --sidebar-color: #124a9a;
+  --layout-background: #f5f6f8;
+  --layout-border: #e1e5eb;
+}
+
+.app-layout {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: var(--layout-background);
+}
+
+
+/* =========================================
+   2. THANH MENU BÊN TRÁI
+========================================= */
+
+.app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: var(--sidebar-width);
+
+  background: var(--sidebar-color);
+  color: #ffffff;
+
+  overflow-y: auto;
+  z-index: 1050;
+}
+
+.sidebar-brand {
+  padding: 25px 12px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-brand > i {
+  display: block;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.sidebar-brand h5 {
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.sidebar-brand small {
+  color: #dceaff;
+  font-size: 13px;
+}
+
+.sidebar-menu {
+  padding: 15px 10px;
+}
+
+.sidebar-label {
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #c3d9f8;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  padding: 13px 12px;
+  margin-bottom: 5px;
+
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+
+  text-align: left;
+  cursor: pointer;
+}
+
+.sidebar-link i {
+  font-size: 17px;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.sidebar-link.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.sidebar-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 15px 10px;
+}
+
+.sidebar-logout:hover {
+  background: #bd3434;
+}
+
+
+/* =========================================
+   3. KHU VỰC NỘI DUNG
+========================================= */
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+  min-width: 0;
+
+  margin-left: var(--sidebar-width);
+}
+
+.app-content {
+  flex: 1;
+  min-width: 0;
+  padding: 25px;
+}
+
+
+/* =========================================
+   4. THANH TIÊU ĐỀ
+========================================= */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+  min-height: 70px;
+  padding: 12px 25px;
+
+  background: #ffffff;
+  border-bottom: 1px solid var(--layout-border);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.header-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 5px;
+  font-size: 26px;
+  color: #333333;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  background: #eaf2ff;
+  color: #0d6efd;
+  font-size: 25px;
+
+  flex-shrink: 0;
+}
+
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-user-info strong {
+  font-size: 14px;
+  color: #333333;
+}
+
+.header-user-info small {
+  font-size: 12px;
+  color: #777777;
+}
+
+
+/* =========================================
+   5. CHÂN TRANG
+========================================= */
+
+.app-footer {
+  padding: 18px 15px;
+  background: #ffffff;
+  border-top: 1px solid var(--layout-border);
+
+  color: #666666;
+  font-size: 13px;
+  text-align: center;
+}
+
+.app-footer small {
+  font-size: 12px;
+}
+
+
+/* =========================================
+   6. LỚP PHỦ MENU
+========================================= */
+
+.sidebar-overlay {
+  display: none;
+}
+
+
+/* =========================================
+   7. TƯƠNG THÍCH MÁY TÍNH BẢNG
+   VÀ ĐIỆN THOẠI
+========================================= */
+
+@media (max-width: 991.98px) {
+
+  .app-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .app-sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .app-main {
+    margin-left: 0;
+  }
+
+  .header-toggle {
+    display: block;
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1040;
+  }
+
+  .app-content {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 575.98px) {
+
+  .app-header {
+    padding: 10px 12px;
+  }
+
+  .header-title {
+    font-size: 15px;
+  }
+
+  .header-user-info {
+    display: none;
+  }
+
+  .header-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+  }
+
+  .app-content {
+    padding: 12px;
+  }
+
+  .app-footer {
+    font-size: 12px;
+  }
+}

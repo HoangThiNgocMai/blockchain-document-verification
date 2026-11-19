@@ -1,0 +1,353 @@
+/* ================================================
+   TRANG QUẢN LÝ TÀI KHOẢN CẤP PHÁT
+================================================ */
+
+.users-page {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+
+/* TIÊU ĐỀ */
+
+.users-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.users-heading h3 {
+  color: #124a9a;
+  font-size: 25px;
+}
+
+.users-heading p {
+  font-size: 14px;
+}
+
+
+/* THẺ THỐNG KÊ */
+
+.users-page .card {
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+}
+
+.users-stat-icon {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 26px;
+}
+
+
+/* TÌM KIẾM VÀ BỘ LỌC */
+
+.users-page .form-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.users-page .form-control,
+.users-page .form-select {
+  min-height: 42px;
+  font-size: 14px;
+}
+
+
+/* BẢNG DANH SÁCH */
+
+.users-table {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.users-table th {
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 12px;
+}
+
+.users-table td {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.users-table .badge {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.user-email {
+  color: #495057;
+  overflow-wrap: anywhere;
+}
+
+
+/* NÚT THAO TÁC */
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.user-actions .btn {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.user-actions .btn:disabled {
+  opacity: 0.5;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 767.98px) {
+
+  .users-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .users-heading h3 {
+    font-size: 22px;
+  }
+
+  .users-table {
+    font-size: 13px;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 9px;
+  }
+
+  .users-stat-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+  }
+
+}
+
+/* ================================================
+   BIỂU MẪU QUẢN LÝ TÀI KHOẢN
+================================================ */
+
+.user-form-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  overflow-y: auto;
+}
+
+.user-form-dialog {
+  width: 100%;
+  max-width: 600px;
+  max-height: calc(100dvh - 40px);
+  background: #ffffff;
+  border-radius: 8px;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* TIÊU ĐỀ */
+
+.user-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e1e5eb;
+}
+
+.user-form-header h5 {
+  font-size: 19px;
+  color: #124a9a;
+}
+
+
+/* NỘI DUNG */
+
+.user-form-body {
+  padding: 24px;
+}
+
+.user-form-body .form-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.user-form-body .form-control,
+.user-form-body .form-select {
+  font-size: 14px;
+  min-height: 42px;
+  border-radius: 5px;
+}
+
+.user-form-body .form-control[readonly] {
+  background: #f1f3f5;
+  color: #495057;
+}
+
+.user-form-body .form-text {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.user-form-body .invalid-feedback {
+  font-size: 12px;
+}
+
+.user-form-body .alert {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* NÚT THAO TÁC */
+
+.user-form-footer {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid #e1e5eb;
+}
+
+.user-form-footer .btn {
+  font-size: 14px;
+  min-width: 95px;
+}
+
+
+/* GIAO DIỆN ĐIỆN THOẠI */
+
+@media (max-width: 575.98px) {
+
+  .user-form-overlay {
+    padding: 10px;
+  }
+
+  .user-form-dialog {
+    max-height: calc(100dvh - 20px);
+  }
+
+  .user-form-header {
+    padding: 15px;
+  }
+
+  .user-form-header h5 {
+    font-size: 17px;
+  }
+
+  .user-form-body {
+    padding: 16px;
+  }
+
+  .user-form-footer {
+    padding: 15px;
+  }
+
+}
+
+/* ================================================
+   XÁC NHẬN KHÓA VÀ MỞ KHÓA TÀI KHOẢN
+================================================ */
+
+.user-status-dialog {
+  max-width: 550px;
+}
+
+.user-confirmation-info {
+  background: #f5f6f8;
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 15px;
+}
+
+.user-confirmation-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.user-confirmation-row:last-child {
+  margin-bottom: 0;
+}
+
+.user-confirmation-row span {
+  color: #6c757d;
+}
+
+.user-confirmation-row strong {
+  color: #212529;
+  font-weight: 600;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.user-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e1e5eb;
+  font-size: 14px;
+}
+
+.user-status-dialog .form-check-label {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.user-status-dialog .badge {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.user-status-dialog .alert {
+  margin-top: 15px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 575.98px) {
+
+  .user-confirmation-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .user-status-row {
+    font-size: 13px;
+  }
+
+  .user-status-dialog .form-check-label {
+    font-size: 13px;
+  }
+
+}

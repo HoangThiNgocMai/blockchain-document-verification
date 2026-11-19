@@ -1,0 +1,178 @@
+/* ================================================
+   TRANG QUẢN LÝ TÀI LIỆU
+================================================ */
+
+.documents-page {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+
+/* TIÊU ĐỀ */
+
+.documents-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.documents-heading h3 {
+  color: #124a9a;
+  font-size: 25px;
+}
+
+.documents-heading p {
+  font-size: 14px;
+}
+
+
+/* THẺ THỐNG KÊ */
+
+.documents-page .card {
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+}
+
+.document-stat-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 23px;
+}
+
+
+/* TÌM KIẾM VÀ BỘ LỌC */
+
+.documents-page .form-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.documents-page .form-control,
+.documents-page .form-select {
+  min-height: 40px;
+  font-size: 14px;
+}
+
+
+/* BẢNG TÀI LIỆU */
+
+.documents-table {
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.documents-table th {
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 12px;
+}
+
+.documents-table td {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.documents-table .badge {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.document-code {
+  display: block;
+  max-width: 150px;
+  font-family: monospace;
+  color: #124a9a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.document-title {
+  min-width: 160px;
+  max-width: 250px;
+  overflow-wrap: anywhere;
+  font-weight: 500;
+}
+
+.documents-table .btn {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+
+/* PHÂN TRANG */
+
+.document-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-top: 10px;
+}
+
+.pagination-information {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.pagination-limit .form-select {
+  width: 85px;
+  min-height: 32px;
+}
+
+.document-pagination .pagination {
+  flex-wrap: wrap;
+}
+
+.document-pagination .page-link {
+  color: #124a9a;
+  font-size: 13px;
+}
+
+.document-pagination .page-item.active .page-link {
+  background-color: #124a9a;
+  border-color: #124a9a;
+  color: #ffffff;
+}
+
+.document-pagination .page-item.disabled .page-link {
+  color: #adb5bd;
+}
+
+
+/* GIAO DIỆN ĐIỆN THOẠI */
+
+@media (max-width: 767.98px) {
+
+  .documents-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .documents-heading h3 {
+    font-size: 22px;
+  }
+
+  .documents-table th,
+  .documents-table td {
+    padding: 9px;
+  }
+
+  .document-pagination {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .document-code {
+    max-width: 120px;
+  }
+
+}

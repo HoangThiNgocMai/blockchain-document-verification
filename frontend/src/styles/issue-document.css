@@ -1,0 +1,275 @@
+/* ================================================
+   1. TRANG CẤP PHÁT TÀI LIỆU
+================================================ */
+
+.issue-document-page {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.issue-document-heading h3 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #124a9a;
+}
+
+.issue-document-heading p {
+  font-size: 14px;
+}
+
+
+/* ================================================
+   2. BIỂU MẪU
+================================================ */
+
+.issue-form-card,
+.issue-result-card {
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+}
+
+.issue-form-card .card-header {
+  padding: 16px 24px;
+}
+
+.issue-form-card .card-header h5 {
+  color: #124a9a;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.issue-form-card .card-body,
+.issue-result-card .card-body {
+  padding: 25px;
+}
+
+.issue-document-page .form-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.issue-document-page .form-control,
+.issue-document-page .form-select {
+  min-height: 42px;
+  font-size: 14px;
+}
+
+.issue-document-page .form-check-label {
+  font-size: 14px;
+}
+
+.issue-document-page .alert {
+  font-size: 14px;
+}
+
+
+/* ================================================
+   3. KHU VỰC CHỌN TỆP
+================================================ */
+
+.issue-upload-box {
+  padding: 30px;
+  text-align: center;
+  border: 2px dashed #b6c7df;
+  background-color: #f8faff;
+  border-radius: 6px;
+}
+
+.issue-upload-box > i {
+  color: #124a9a;
+  font-size: 45px;
+}
+
+.issue-upload-box h6 {
+  margin-top: 12px;
+  font-weight: 600;
+  color: #124a9a;
+}
+
+.issue-upload-box p {
+  font-size: 13px;
+}
+
+.issue-upload-box input {
+  max-width: 450px;
+  margin: 15px auto 0;
+}
+
+.issue-selected-file {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid #dee2e6;
+  background-color: #ffffff;
+  border-radius: 6px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+
+/* ================================================
+   4. NÚT THAO TÁC
+================================================ */
+
+.issue-form-actions,
+.issue-result-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+
+/* ================================================
+   5. TRẠNG THÁI ĐANG XỬ LÝ
+================================================ */
+
+.issue-processing {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px;
+  border: 1px solid #b6c7df;
+  border-radius: 6px;
+  background-color: #f0f5ff;
+}
+
+.issue-processing .spinner-border {
+  flex-shrink: 0;
+}
+
+
+/* ================================================
+   6. KẾT QUẢ CẤP PHÁT
+================================================ */
+
+.issue-success-heading {
+  text-align: center;
+  padding: 20px 0 30px;
+}
+
+.issue-success-heading > i {
+  font-size: 55px;
+  color: #198754;
+}
+
+.issue-success-heading h4 {
+  color: #198754;
+  font-weight: 600;
+  font-size: 23px;
+  margin-top: 12px;
+}
+
+.issue-section-title {
+  color: #124a9a;
+  font-size: 17px;
+  font-weight: 600;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 12px;
+}
+
+.issue-information-row {
+  display: flex;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 14px;
+}
+
+.issue-information-label {
+  width: 145px;
+  flex-shrink: 0;
+  color: #6c757d;
+}
+
+.issue-information-value {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.issue-code {
+  font-family: monospace;
+  color: #124a9a;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.issue-copy-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+
+/* ================================================
+   7. MÃ QR
+================================================ */
+
+.issue-qr-box {
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+}
+
+.issue-qr-box h5 {
+  color: #124a9a;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.issue-qr-image {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin: 15px auto;
+}
+
+
+/* ================================================
+   8. GIAO DIỆN ĐIỆN THOẠI
+================================================ */
+
+@media (max-width: 767.98px) {
+
+  .issue-document-heading h3 {
+    font-size: 22px;
+  }
+
+  .issue-form-card .card-body,
+  .issue-result-card .card-body {
+    padding: 16px;
+  }
+
+  .issue-upload-box {
+    padding: 20px;
+  }
+
+  .issue-information-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .issue-information-label {
+    width: 100%;
+  }
+
+  .issue-information-value {
+    width: 100%;
+  }
+
+  .issue-form-actions,
+  .issue-result-actions {
+    flex-direction: column;
+  }
+
+  .issue-form-actions .btn,
+  .issue-result-actions .btn {
+    width: 100%;
+  }
+
+}

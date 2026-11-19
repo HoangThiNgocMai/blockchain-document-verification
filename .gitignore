@@ -1,12 +1,35 @@
+# Thu vien
 node_modules/
+
+# Bien moi truong
 .env
 .env.*
 !.env.example
+
+# Thu muc build
+dist/
+build/
+
+# File tai len
 uploads/
+
+# File log
+*.log
+
+# File sao luu
 *.bak
-.postman/
-postman/
- 
-# Local blockchain test scripts
+*.backup
+
+# File kiem thu
 backend/test-admin-blockchain.js
 backend/test-admin-wallet.js
+
+# File khoi phuc du lieu noi bo
+backend/check-recovery-wallet.js
+backend/restore-documents.js
+backend/restore-transactions.js
+backend/setup-recovery-issuers.js
+
+# Postman
+.postman/
+postman/
